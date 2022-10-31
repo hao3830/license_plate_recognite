@@ -1,0 +1,8 @@
+version: '3.9'
+services:
+  license_plate_recognite:
+    build: .
+    restart: always
+    container_name: license_plate_recognite
+    ports:
+      - "8087:3000"
