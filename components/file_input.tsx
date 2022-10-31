@@ -24,7 +24,7 @@ const FileUpload = ({
 
   return (
     <div className=" h-full w-1/4 rounded-md border-dashed bg-gray-200  items-center mr-5 flex-col border-black border relative z-10">
-      <div className=" absolute left-12 top-5 justify-center w-4/6 h-3/6 flex items-center border border-gray-500   rounded-full">
+      <div className=" justify-center  h-3/6 relative m-5 flex items-center border border-gray-500   rounded-full">
         <input
           type="file"
           name="myImage"

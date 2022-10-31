@@ -18,15 +18,25 @@ const Home = () => {
       setFileDataURL(fileReader.result as string);
     };
     fileReader.readAsDataURL(file);
-
-
   }, [file]);
 
   return (
     <div className=" w-screen h-screen bg-gray-200 justify-center items-center flex">
       <div className=" w-11/12 h-5/6 bg-white rounded-2xl shadow-lg drop-shadow-xl shadow-slate-400 relative  justify-center items-center">
         <div className="flex flex-col h-5/6 w-full duration-300">
-          <div className=" p-2 w-full h-1/6">Logo</div>
+          <div className=" relative p-2 w-full h-1/6 flex justify-center items-center">
+            <div className=" absolute left-5 top-1">
+              <Image
+                src="/static/uit_icon.png"
+                width={100}
+                height={100}
+                alt={"UIT logo"}
+              />
+            </div>
+            <h1 className=" text-3xl font-bold text-blue-500">
+              LICENSE PLATE RECOGNITION DEMO
+            </h1>
+          </div>
           <div className="flex w-full justify-around items-center h-5/6 ">
             <FileUpload setFile={setFile} setResult={setResult} />
             {file && (
@@ -39,7 +49,8 @@ const Home = () => {
                       height={350}
                       alt={"Image Results"}
                     />
-                    {result.predicts.ocr_predict[0].str} - {Math.round(result.predicts.ocr_predict[0].conf * 100) / 100}
+                    {result.predicts.ocr_predict[0].str} -{" "}
+                    {Math.round(result.predicts.ocr_predict[0].conf * 100)}%
                   </div>
                 )}
               </div>
