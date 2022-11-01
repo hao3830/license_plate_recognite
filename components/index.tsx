@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { IPostFileResponse } from "@/APIS/index";
 import FileUpload from "./file_input";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faImage } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -39,20 +41,29 @@ const Home = () => {
           </div>
           <div className="flex w-full justify-around items-center h-5/6 ">
             <FileUpload setFile={setFile} setResult={setResult} />
-            {file && (
-              <div>
-                {fileDataURL && result && (
-                  <div className=" hover:scale-150 text-center">
-                    <Image
-                      src={fileDataURL}
-                      width={300}
-                      height={350}
-                      alt={"Image Results"}
-                    />
+            {file ? (
+                fileDataURL && result && (
+                  <div className=" h-5/6 w-1/2 rounded-md border-dashed flex justify-center items-center   m-10 flex-col border-black border relative z-10 text-center">
+                    <div className=" absolute top-0 left-0 p-2 border opacity-70 flex justify-around items-center w-1/6">
+                      <FontAwesomeIcon icon={faImage} size="1x" />
+                      Output
+                    </div>
+                    <span>
+                      <img src={fileDataURL} alt={"Image Results"} />
+                    </span>
                     {result.predicts.ocr_predict[0].str} -{" "}
                     {Math.round(result.predicts.ocr_predict[0].conf * 100)}%
                   </div>
-                )}
+                )
+            ) : (
+              <div className=" h-5/6 w-1/2 rounded-md border-dashed flex justify-center items-center   m-10 flex-col border-black border relative z-10">
+                <div className=" absolute top-0 left-0 p-2 border opacity-70 flex justify-around items-center w-1/6">
+                  <FontAwesomeIcon icon={faImage} size="1x" />
+                  Output
+                </div>
+                <i className=" opacity-50">
+                  <FontAwesomeIcon icon={faImage} size="10x" />
+                </i>
               </div>
             )}
           </div>
