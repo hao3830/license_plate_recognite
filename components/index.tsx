@@ -4,6 +4,7 @@ import FileUpload from "./file_input";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
+import UITLogo from '../static/uit_icon.png';
 
 const Home = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -29,7 +30,7 @@ const Home = () => {
           <div className=" relative p-2 w-full h-1/6 flex justify-center items-center">
             <div className=" absolute left-5 top-1">
               <Image
-                src="/static/uit_icon.png"
+                src={UITLogo}
                 width={100}
                 height={100}
                 alt={"UIT logo"}

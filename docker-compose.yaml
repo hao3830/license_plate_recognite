@@ -5,4 +5,4 @@ services:
     restart: always
     container_name: license_plate_recognite
     ports:
-      - "8087:3000"
+      - "8088:3000"
