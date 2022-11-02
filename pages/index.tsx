@@ -1,8 +1,16 @@
-import Link from 'next/link'
-import Home from '../components'
+import dynamic from 'next/dynamic'
 
-const IndexPage = () => (
-  <Home/>
-)
+const IndexPage = () => {
+  
+  const Home = dynamic(
+    () =>
+      import('../components'),
+    {
+      ssr: false,
+    }
+  )
+
+  return <Home/>
+}
 
 export default IndexPage
