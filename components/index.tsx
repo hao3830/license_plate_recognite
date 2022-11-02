@@ -42,21 +42,23 @@ const Home = () => {
           </div>
           <div className="flex w-full justify-around items-center h-5/6 ">
             <FileUpload setFile={setFile} setResult={setResult} />
-            {file ? (
-                fileDataURL && result && (
-                  <div className=" h-5/6 w-1/2 rounded-md border-dashed flex justify-center items-center   m-10 flex-col border-black border relative z-10 text-center">
+            {file && 
+                fileDataURL && result ? (
+                  <div className=" h-5/6 w-1/2 rounded-md border-dashed flex justify-center items-center  m-10 flex-col border-black border relative z-10 text-center">
                     <div className=" absolute top-0 left-0 p-2 border opacity-70 flex justify-around items-center w-1/6">
                       <FontAwesomeIcon icon={faImage} size="1x" />
                       Output
                     </div>
+                    <span className="w-full h-1/2 relative flex flex-col justify-center items-center">
+                      <Image src={fileDataURL} alt={"Image Results"} width={300} height={100} />
                     <span>
-                      <img src={fileDataURL} alt={"Image Results"} />
-                    </span>
                     {result.predicts.ocr_predict[0].str} -{" "}
                     {Math.round(result.predicts.ocr_predict[0].conf * 100)}%
+                    </span>
+                    </span>
                   </div>
                 )
-            ) : (
+             : (
               <div className=" h-5/6 w-1/2 rounded-md border-dashed flex justify-center items-center   m-10 flex-col border-black border relative z-10">
                 <div className=" absolute top-0 left-0 p-2 border opacity-70 flex justify-around items-center w-1/6">
                   <FontAwesomeIcon icon={faImage} size="1x" />
